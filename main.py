@@ -6,7 +6,7 @@ import time
 from langchain_community.llms import Ollama
 
 
-llm = Ollama(model="mannix/phi3-mini-4k")
+llm = Ollama(model="llama2")
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -30,7 +30,7 @@ def few_shot_prompting(text):
     prompt = f"""
     Context: {text}
 
-    Based on the context above, please answer the following questions:
+    Based on the context above, please provide only the direct answers to the following questions No other explanations only answer to the question:
 
     Q1: What is the generic name?
     A1: 
@@ -119,7 +119,7 @@ def process_pdfs_and_save_to_csv(directory, output_csv):
 def main():
    
     pdf_directory = r'E:\canada\iter1_Team_1' 
-    output_csv = 'extracted.csv'
+    output_csv = 'drug_extracted.csv'
     
 
     process_pdfs_and_save_to_csv(pdf_directory, output_csv)
